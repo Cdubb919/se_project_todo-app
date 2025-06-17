@@ -14,4 +14,4 @@ Give a description of the technologies and techniques used. Pictures, GIFs, or s
 
 This project is deployed on GitHub Pages:
 
-- https://github.com/Cdubb919/se_project_todo-app-main.git
+- https://github.com/Cdubb919/se_project_todo-app.git
