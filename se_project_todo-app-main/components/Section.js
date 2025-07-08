@@ -1,11 +1,11 @@
 class Section {
-    constructor({ items, renderer, containerSelector }) {
+    constructor({ items, renderer, containerSelector, initialTodos }) {
         this._items = items;
         this._renderer = renderer;
         this._container = document.querySelector(containerSelector);
     }
 
-    renderitems() {
+    renderItems() {
         this._items.forEach((items) => {
             const itemElement = this._renderer(items);
             const deleteButton = itemElement.querySelector('.delete-button');
@@ -25,7 +25,7 @@ class Section {
     };
 
     addItem(element) {
-
+        this._container.append(element);
     };
 };
 
