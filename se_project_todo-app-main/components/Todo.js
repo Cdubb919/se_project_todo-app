@@ -1,28 +1,35 @@
 class Todo {
-    constructor(data, selector) {
-        this._data = data;
+    constructor(data, selector, handleCheck, handleDelete) {
+        this._date = data.date;
         this._templateElement = document.querySelector(selector);
-
+        this._handleCheck = handleCheck;
+        this._selector = selector;
+        this._id = data.id;
+        this._completed = data.completed;
+        this._name = data.name;
+        this._handleDelete = handleDelete;
     };
 
     _setEventListeners() {
         const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
         todoDeleteBtn.addEventListener("click", () => {
+            this._handleDelete();
             this._todoElement.remove();
             this._todoElement = null;
+            this._handleCheck(this._completed);
         });
 
         this._todoCheckboxEl.addEventListener("change", () => {
-            this._data.completed = !this._data.completed;
+            this._completed = !this._completed;
         });
     }
 
     _generateCheckboxEl() {
         this._todoCheckboxEl = this._todoElement.querySelector(".todo__completed");
         this._todoLabel = this._todoElement.querySelector(".todo__label");
-        this._todoCheckboxEl.checked = this._data.completed;
-        this._todoCheckboxEl.id = `todo-${this._data.id}`;
-        this._todoLabel.setAttribute("for", `todo-${this._data.id}`);
+        this._todoCheckboxEl.checked = this._completed;
+        this._todoCheckboxEl.id = `todo-${this._id}`;
+        this._todoLabel.setAttribute("for", `todo-${this._id}`);
     }
 
     getView() {
@@ -33,8 +40,8 @@ class Todo {
         const todoNameEl = this._todoElement.querySelector(".todo__name");
         const todoDate = this._todoElement.querySelector(".todo__date");
 
-        todoNameEl.textContent = this._data.name;
-        const dueDate = new Date(this._data.date);
+        todoNameEl.textContent = this._name;
+        const dueDate = new Date(this._date);
         if (!isNaN(dueDate)) {
             todoDate.textContent = `Due: ${dueDate.toLocaleString("en-US", {
                 year: "numeric",
