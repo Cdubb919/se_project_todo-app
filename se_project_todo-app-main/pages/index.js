@@ -24,10 +24,10 @@ const addTodoPopupEl = new PopupWithForm({
   popupSelector: "#add-todo-popup",
   handleFormSubmit: (values) => {
     const id = uuidv4();
-    const todoData = { id: id, name: values.name, date: values.date, completed: false};
-  renderTodo(todoData);
-  todoCounter.updateTotal(true);
-  addTodoPopupEl.close();
+    const todoData = { id: id, name: values.name, date: values.date, completed: false };
+    renderTodo(todoData);
+    todoCounter.updateTotal(true);
+    addTodoPopupEl.close();
   }
 });
 addTodoPopupEl.setEventListeners();
@@ -46,15 +46,15 @@ const closeModal = (modal) => {
   modal.classList.remove("popup_visible");
 };
 
-function handleCheck() {
+function handleCheck(completed) {
   todoCounter.updateCompleted(completed);
 }
 
-function handleDelete() {
+function handleDelete(completed) {
   if (completed) {
-    todoCounter.updateCompleted(false)
+    todoCounter.updateCompleted(false);
   }
-}
+};
 
 const generateTodo = (data) => {
   const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);

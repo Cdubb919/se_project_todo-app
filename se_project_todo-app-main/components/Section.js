@@ -1,5 +1,5 @@
 class Section {
-    constructor({ items, renderer, containerSelector, initialTodos }) {
+    constructor({ items, renderer, containerSelector }) {
         this._items = items;
         this._renderer = renderer;
         this._container = document.querySelector(containerSelector);
@@ -17,7 +17,7 @@ class Section {
 
         this._container.appendChild(itemElement);
 
-        _deleteItem(index)
+        _deleteItem(index);
         this._items.splice(index, 1);
 
         const itemElement = this._container.children[index];
