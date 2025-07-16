@@ -13,7 +13,7 @@ class Todo {
     _setEventListeners() {
         const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
         todoDeleteBtn.addEventListener("click", () => {
-            this._handleDelete();
+            this._handleDelete(this._completed);
             this._todoElement.remove();
             this._todoElement = null;
             this._handleCheck(this._completed);
