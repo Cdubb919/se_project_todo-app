@@ -30,7 +30,10 @@ const addTodoPopupEl = new PopupWithForm({
     addTodoPopupEl.close();
   }
 });
+console.log("About to call setEventListeners");
+
 addTodoPopupEl.setEventListeners();
+console.log("call setEventListeners");
 
 const section = new Section({
   items: [],
@@ -47,6 +50,7 @@ const closeModal = (modal) => {
 };
 
 function handleCheck(completed) {
+
   todoCounter.updateCompleted(completed);
 }
 
