@@ -28,6 +28,7 @@ const addTodoPopupEl = new PopupWithForm({
     renderTodo(todoData);
     todoCounter.updateTotal(true);
     addTodoPopupEl.close();
+    newFormValidator.resetValidation();
   }
 });
 console.log("About to call setEventListeners");
@@ -37,13 +38,9 @@ console.log("call setEventListeners");
 
 const section = new Section({
   items: [],
-  renderer: (item) => { },
+  renderer: (Section) => { },
   containerSelector: ".todos__list",
 });
-
-const openModal = (modal) => {
-  modal.classList.add("popup_visible");
-};
 
 const closeModal = (modal) => {
   modal.classList.remove("popup_visible");

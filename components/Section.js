@@ -8,11 +8,6 @@ class Section {
     renderItems() {
         this._items.forEach((items) => {
             const itemElement = this._renderer(items);
-            const deleteButton = itemElement.querySelector('.delete-button');
-        });
-
-        deleteButton.addEventListener('click', () => {
-            this._deleteItem(index);
         });
 
         this._container.appendChild(itemElement);
