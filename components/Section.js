@@ -7,16 +7,8 @@ class Section {
 
     renderItems() {
         this._items.forEach((items) => {
-            const itemElement = this._renderer(items);
+            this._renderer(items);
         });
-
-        this._container.appendChild(itemElement);
-
-        _deleteItem(index);
-        this._items.splice(index, 1);
-
-        const itemElement = this._container.children[index];
-        itemElement.remove();
     };
 
     addItem(element) {
