@@ -37,14 +37,12 @@ addTodoPopupEl.setEventListeners();
 console.log("call setEventListeners");
 
 const section = new Section({
-  items: [],
-  renderer: (Section) => { },
+  items: initialTodos,
+  renderer: (item) => {
+    renderTodo(item);
+  },
   containerSelector: ".todos__list",
 });
-
-const closeModal = (modal) => {
-  modal.classList.remove("popup_visible");
-};
 
 function handleCheck(completed) {
 
@@ -73,9 +71,7 @@ addTodoButton.addEventListener("click", () => {
   addTodoPopupEl.open();
 });
 
-initialTodos.forEach((item) => {
-  renderTodo(item);
-});
+section.renderItems();
 
 const newFormValidator = new FormValidator(validationConfig, addTodoForm);
 newFormValidator.enableValidation();
